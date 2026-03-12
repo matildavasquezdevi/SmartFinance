@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <title>Login - SmartFinance</title>
+</head>
+
+<body class="login-page">
+  <header class="navbar">
+    <div class="logo">SmartFinance</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="#">Características</a></li>
+      <li><a href="#">Precios</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+
+    <a href="login.html" class="login-link">
+      <button class="login-btn">Ingresar</button>
+    </a>
+  </header>
+
+  <main class="login-wrapper">
+    <div class="login-container">
+      <h1>Iniciar sesión</h1>
+
+      <form id="loginForm">
+          <input id="email" type="email" placeholder="Correo electrónico" required>
+          <input id="password" type="password" placeholder="Contraseña" required>
+          <button type="submit">Ingresar</button>
+      </form>
+
+      <button id="google-login" class="google-btn" type="button">Ingresar con Google</button>
+      <button id="signup-btn" type="button">Crear cuenta</button>
+    </div>
+  </main>
+
+  <script src="header.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

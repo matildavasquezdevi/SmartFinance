@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #f8fbff, #eef4ff);
+  color: #1f2937;
+}
+
+/* HEADER */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #12c48b;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #12c48b;
+}
+
+.login-btn {
+  background: #12c48b;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #0fa678;
+  transform: translateY(-2px);
+}
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-text {
+  max-width: 850px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #111827;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #6b7280;
+  margin-bottom: 36px;
+}
+
+.cta {
+  background: #12c48b;
+  color: white;
+  border: none;
+  padding: 18px 34px;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(18, 196, 139, 0.25);
+}
+
+.cta:hover {
+  background: #0fa678;
+  transform: translateY(-2px);
+}
+
+.login-page{
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.login-wrapper{
+  min-height: calc(100vh - 90px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+}
+
+.login-container{
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+width:320px;
+text-align:center;
+gap:20px;
+}
+
+.login-container input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ddd;
+border-radius:6px;
+}
+
+.login-container button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#12c48b;
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin: 5px;
+}
+
+
+.google-btn{
+background:#4285F4;
+margin-top:10px;
+}
