@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Mi Perfil - SmartFinance</title>
+</head>
+
+<body>
+    <header class="navbar">
+    <div class="logo">SmartFinance</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="movimientos.html">Movimientos</a></li>
+    </ul>
+
+    <button id="logout-btn" class="login-btn">Salir</button>
+    </header>
+
+    <main class="movimientos-page">
+        <section class="movimientos-header">
+            <div>
+                <p class="perfil-subtitle">Tus finanzas</p>
+                <h1>Movimientos</h1>
+                <p class="perfil-description">
+                Registra tus ingresos y gastos y revisa su comportamiento visualmente.
+                </p>
+            </div>
+        </section>
+
+        <section class="movimientos-grid">
+            <div class="perfil-card">
+                <h3>Agregar movimiento</h3>
+
+                <form id="movement-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="type">Tipo</label>
+                        <select id="type" required>
+                            <option value="">Selecciona</option>
+                            <option value="ingreso">Ingreso</option>
+                            <option value="gasto">Gasto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Monto</label>
+                        <input id="amount" type="number" step="0.01" min="0" placeholder="Ej: 15000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <input id="category" type="text" placeholder="Ej: comida, sueldo, transporte" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="movement_date">Fecha</label>
+                        <input id="movement_date" type="date" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Descripción</label>
+                        <input id="description" type="text" placeholder="Detalle del movimiento">
+                    </div>
+                </div>
+
+                <button class="primary-btn" type="submit">Guardar movimiento</button>
+                </form>
+            </div>
+
+            <div class="perfil-card resumen-card">
+                <h3>Resumen</h3>
+
+                <div class="resumen-boxes">
+                    <div class="resumen-item">
+                        <p class="resumen-label">Ingresos</p>
+                        <h4 id="total-income">$0</h4>
+                    </div>
+
+                    <div class="resumen-item">
+                        <p class="resumen-label">Gastos</p>
+                        <h4 id="total-expense">$0</h4>
+                    </div>
+
+                    <div class="resumen-item balance">
+                        <p class="resumen-label">Balance</p>
+                        <h4 id="total-balance">$0</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="movimientos.js"></script>
+
+</body>
+</html>

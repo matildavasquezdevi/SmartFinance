@@ -381,3 +381,81 @@ margin-top:10px;
     flex-wrap: wrap;
   }
 }
+
+.movimientos-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px 80px;
+}
+
+.movimientos-header {
+  margin-bottom: 35px;
+}
+
+.movimientos-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-group select {
+  padding: 14px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: white;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.movements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.movement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fbff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 16px;
+  gap: 16px;
+}
+
+.movement-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.movement-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.amount-income {
+  font-weight: 700;
+  color: #12c48b;
+}
+
+.amount-expense {
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.empty-state {
+  color: #6b7280;
+}
+
+@media (max-width: 900px) {
+  .movimientos-grid {
+    grid-template-columns: 1fr;
+  }
+}
