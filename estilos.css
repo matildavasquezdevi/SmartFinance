@@ -20,11 +20,22 @@ body {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.logo {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #12c48b;
+.logo{
+  font-size:2rem;
+  font-weight:700;
+  color:#12c48b;
+  text-decoration:none;
+  letter-spacing:0.5px;
 }
+
+.logo:visited{
+  color:#12c48b;
+}
+
+.logo:hover{
+  color:#0fa678;
+}
+
 
 .nav-links {
   list-style: none;

@@ -1,130 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="estilos.css">
-  <title>Mi Perfil - SmartFinance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Mi Perfil - SmartFinance</title>
 </head>
-<body>
 
-  <header class="navbar">
+<body>
+    <header class="navbar">
     <div class="logo">SmartFinance</div>
 
     <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="#">Características</a></li>
-      <li><a href="#">Precios</a></li>
-      <li><a href="#">Contacto</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="#">Características</a></li>
+        <li><a href="#">Precios</a></li>
+        <li><a href="#">Contacto</a></li>
     </ul>
 
-    <a href="login.html" class="login-btn">Salir</a>
-  </header>
+    <button id="logout-btn" class="login-btn">Salir</button>
+    </header>
 
-  <main class="perfil-page">
-    <section class="perfil-header">
-      <div>
-        <p class="perfil-subtitle">Tu espacio personal</p>
-        <h1>Mi Perfil</h1>
-        <p class="perfil-description">
-          Administra tu información personal y revisa un resumen general de tu actividad financiera.
-        </p>
-      </div>
-    </section>
+    <main class="perfil-page">
+        <section class="perfil-header">
+            <div>
+                <p class="perfil-subtitle">Tu espacio personal</p>
+                <h1>Mi Perfil</h1>
+                <p class="perfil-description">
+                Administra tu información personal y revisa un resumen general de tu actividad financiera.
+                </p>
+            </div>
+        </section>
+        
+        <section class="perfil-grid">
+            <div class="perfil-card">
 
-    <section class="perfil-grid">
-      <div class="perfil-card">
-        <div class="card-top">
-          <div class="avatar">M</div>
-          <div>
-            <h2 id="profile-name">Tu nombre</h2>
-            <p id="profile-email">correo@ejemplo.com</p>
-          </div>
-        </div>
+            <div class="card-top">
+                <div class="avatar" id="avatar">M</div>
+                    <div>
+                        <h2 id="profile-name">Tu nombre</h2>
+                        <p id="profile-email">correo@ejemplo.com</p>
+                    </div>
+                </div>
 
-        <div class="info-list">
-          <div class="info-item">
-            <span class="info-label">Fecha de nacimiento</span>
-            <span class="info-value" id="profile-birth">No definida</span>
-          </div>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-label">Fecha de nacimiento</span>
+                        <span class="info-value" id="profile-birth">No definida</span>
+                    </div>
 
-          <div class="info-item">
-            <span class="info-label">Teléfono</span>
-            <span class="info-value" id="profile-phone">No definido</span>
-          </div>
+                    <div class="info-item">
+                        <span class="info-label">Teléfono</span>
+                        <span class="info-value" id="profile-phone">No definido</span>
+                    </div>
 
-          <div class="info-item">
-            <span class="info-label">Correo electrónico</span>
-            <span class="info-value" id="profile-email-2">correo@ejemplo.com</span>
-          </div>
-        </div>
+                    <div class="info-item">
+                        <span class="info-label">Correo electrónico</span>
+                        <span class="info-value" id="profile-email-2">correo@ejemplo.com</span>
+                    </div>
+                </div>
 
-        <button id="edit-profile-btn" class="primary-btn" type="button">Editar perfil</button>
-      </div>
+                <button id="edit-profile-btn" class="primary-btn" type="button">Editar perfil</button>
+            </div>
 
-      <div class="perfil-card resumen-card">
-        <h3>Resumen financiero</h3>
+            <div class="perfil-card resumen-card">
+                <h3>Resumen financiero</h3>
 
-        <div class="resumen-boxes">
-          <div class="resumen-item">
-            <p class="resumen-label">Ingresos del mes</p>
-            <h4>$0</h4>
-          </div>
+                <div class="resumen-boxes">
+                    <div class="resumen-item">
+                        <p class="resumen-label">Ingresos del mes</p>
+                        <h4>$0</h4>
+                    </div>
 
-          <div class="resumen-item">
-            <p class="resumen-label">Gastos del mes</p>
-            <h4>$0</h4>
-          </div>
+                    <div class="resumen-item">
+                        <p class="resumen-label">Gastos del mes</p>
+                        <h4>$0</h4>
+                    </div>
 
-          <div class="resumen-item balance">
-            <p class="resumen-label">Balance total</p>
-            <h4>$0</h4>
-          </div>
-        </div>
+                    <div class="resumen-item balance">
+                        <p class="resumen-label">Balance total</p>
+                        <h4>$0</h4>
+                    </div>
+                </div>
 
-        <p class="resumen-note">
-          Aquí después podrás ver tus ingresos, gastos y análisis inteligente de SmartFinance.
-        </p>
-      </div>
-    </section>
+                <p class="resumen-note">
+                    Aquí después podrás ver tus ingresos, gastos y análisis inteligente de SmartFinance.
+                </p>
+            </div>
+        </section>
 
-    <section id="profile-form-section" class="perfil-form-card hidden">
-      <h3>Editar información</h3>
+        <section id="profile-form-section" class="perfil-form-card hidden">
+            <h3>Editar información</h3>
+            <form id="profile-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input id="name" type="text">
+                    </div>
 
-      <form id="profile-form">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="name">Nombre</label>
-            <input id="name" type="text" placeholder="Escribe tu nombre">
-          </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input id="last_name" type="text">
+                    </div>
 
-          <div class="form-group">
-            <label for="last_name">Apellido</label>
-            <input id="last_name" type="text" placeholder="Escribe tu apellido">
-          </div>
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <input id="birth_date" type="date">
+                    </div>
 
-          <div class="form-group">
-            <label for="birth_date">Fecha de nacimiento</label>
-            <input id="birth_date" type="date">
-          </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input id="email_profile" type="email" disabled>
+                    </div>
 
-          <div class="form-group">
-            <label for="email_profile">Correo electrónico</label>
-            <input id="email_profile" type="email" disabled>
-          </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input id="phone" type="text">
+                    </div>
+                </div>
 
-          <div class="form-group">
-            <label for="phone">Número de teléfono</label>
-            <input id="phone" type="text" placeholder="+56 9...">
-          </div>
-        </div>
+                <button class="primary-btn" type="submit">Guardar cambios</button>
+            </form>
+        </section>
+    </main>
 
-        <button class="primary-btn" type="submit">Guardar cambios</button>
-      </form>
-    </section>
-  </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="perfil.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="perfil.js"></script>
+
 </body>
 </html>
