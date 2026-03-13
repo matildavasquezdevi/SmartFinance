@@ -283,7 +283,8 @@ margin-top:10px;
 }
 
 .resumen-card h3,
-.perfil-form-card h3 {
+.perfil-form-card h3,
+.perfil-card h3 {
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: #111827;
