@@ -12,7 +12,7 @@ if (googleBtn) {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: window.location.origin
+        redirectTo: window.location.origin + "/perfil.html"
       }
     });
 
@@ -70,7 +70,7 @@ if (loginForm) {
       alert("Inicio de sesión exitoso");
       console.log("Usuario logueado:", data);
 
-      window.location.href = "dashboard.html";
+      window.location.href = "perfil.html";
     }
   });
 }
