@@ -460,3 +460,58 @@ margin-top:10px;
     grid-template-columns: 1fr;
   }
 }
+.movimientos-list-section {
+  margin-top: 24px;
+}
+
+.movements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.movement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fbff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px 18px;
+  gap: 16px;
+}
+
+.movement-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.movement-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.movement-subtitle {
+  font-size: 0.92rem;
+  color: #6b7280;
+}
+
+.amount-income {
+  font-weight: 700;
+  color: #12c48b;
+  font-size: 1rem;
+}
+
+.amount-expense {
+  font-weight: 700;
+  color: #ef4444;
+  font-size: 1rem;
+}
+
+.empty-state {
+  color: #6b7280;
+  margin-top: 8px;
+}

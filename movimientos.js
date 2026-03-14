@@ -5,37 +5,44 @@ const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 let currentUser = null;
 let categoryChart = null;
 
-async function checkSession() {
-  const { data: sessionData } = await supabaseClient.auth.getSession();
-  const session = sessionData.session;
+function formatCLP(value) {
+  return new Intl.NumberFormat("es-CL", {
+    style: "currency",
+    currency: "CLP",
+    maximumFractionDigits: 0
+  }).format(value);
+}
 
-  if (!session || !session.user) {
+async function initPage() {
+  const { data, error } = await supabaseClient.auth.getSession();
+
+  if (error || !data.session) {
     window.location.href = "login.html";
-    return null;
+    return;
   }
 
-  currentUser = session.user;
-  return session.user;
+  currentUser = data.session.user;
+
+  await loadTransactions();
 }
 
 async function loadTransactions() {
-  const user = await checkSession();
-  if (!user) return;
+  if (!currentUser) return;
 
   const { data, error } = await supabaseClient
     .from("transactions")
     .select("*")
-    .eq("user_id", user.id)
-    .order("movement_date", { ascending: false });
+    .eq("user_id", currentUser.id)
+    .order("created_at", { ascending: false });
 
   if (error) {
-    console.error("Error cargando movimientos:", error);
+    console.error("Error al cargar movimientos:", error);
     return;
   }
 
-  renderSummary(data);
-  renderMovements(data);
-  renderChart(data);
+  renderSummary(data || []);
+  renderMovements(data || []);
+  renderChart(data || []);
 }
 
 function renderSummary(movements) {
@@ -56,6 +63,8 @@ function renderSummary(movements) {
 
 function renderMovements(movements) {
   const container = document.getElementById("movements-list");
+  if (!container) return;
+
   container.innerHTML = "";
 
   if (movements.length === 0) {
@@ -63,14 +72,16 @@ function renderMovements(movements) {
     return;
   }
 
-  movements.forEach(movement => {
+  movements.forEach((movement) => {
     const item = document.createElement("div");
-    item.className = "movement-item";
+    item.classList.add("movement-item");
 
     item.innerHTML = `
-      <div>
-        <p class="movement-title">${movement.category}</p>
-        <p class="movement-subtitle">${movement.description || "Sin descripción"} · ${movement.movement_date}</p>
+      <div class="movement-left">
+        <span class="movement-title">${movement.category}</span>
+        <span class="movement-subtitle">
+          ${movement.description || "Sin descripción"} · ${movement.movement_date}
+        </span>
       </div>
       <div class="${movement.type === "ingreso" ? "amount-income" : "amount-expense"}">
         ${movement.type === "ingreso" ? "+" : "-"} ${formatCLP(Number(movement.amount))}
@@ -82,6 +93,9 @@ function renderMovements(movements) {
 }
 
 function renderChart(movements) {
+  const canvas = document.getElementById("categoryChart");
+  if (!canvas) return;
+
   const gastos = movements.filter(m => m.type === "gasto");
 
   const totalsByCategory = {};
@@ -94,22 +108,21 @@ function renderChart(movements) {
   const labels = Object.keys(totalsByCategory);
   const values = Object.values(totalsByCategory);
 
-  const ctx = document.getElementById("categoryChart");
-
   if (categoryChart) {
     categoryChart.destroy();
   }
 
-  categoryChart = new Chart(ctx, {
+  categoryChart = new Chart(canvas, {
     type: "doughnut",
     data: {
-      labels: labels,
+      labels: labels.length ? labels : ["Sin datos"],
       datasets: [{
-        data: values
+        data: values.length ? values : [1]
       }]
     },
     options: {
       responsive: true,
+      animation: false,
       plugins: {
         legend: {
           position: "bottom"
@@ -119,22 +132,13 @@ function renderChart(movements) {
   });
 }
 
-function formatCLP(value) {
-  return new Intl.NumberFormat("es-CL", {
-    style: "currency",
-    currency: "CLP",
-    maximumFractionDigits: 0
-  }).format(value);
-}
-
 const movementForm = document.getElementById("movement-form");
 
 if (movementForm) {
   movementForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const user = await checkSession();
-    if (!user) return;
+    if (!currentUser) return;
 
     const type = document.getElementById("type").value;
     const amount = document.getElementById("amount").value;
@@ -146,7 +150,7 @@ if (movementForm) {
       .from("transactions")
       .insert([
         {
-          user_id: user.id,
+          user_id: currentUser.id,
           type,
           amount,
           category,
@@ -163,12 +167,12 @@ if (movementForm) {
 
     movementForm.reset();
     document.getElementById("movement_date").valueAsDate = new Date();
+
     await loadTransactions();
   });
 }
 
 const logoutBtn = document.getElementById("logout-btn");
-
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
     await supabaseClient.auth.signOut();
@@ -176,5 +180,9 @@ if (logoutBtn) {
   });
 }
 
-document.getElementById("movement_date").valueAsDate = new Date();
-loadTransactions();
+const movementDateInput = document.getElementById("movement_date");
+if (movementDateInput) {
+  movementDateInput.valueAsDate = new Date();
+}
+
+initPage();
